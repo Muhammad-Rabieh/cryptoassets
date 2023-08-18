@@ -11,6 +11,7 @@ func NewWorker(ctx context.Context, period time.Duration, f func()) {
 		return
 	}
 	tick := time.NewTicker(period)
+	GetProgress() // Call GetProgress function and log the progress
 	f()
 	defer tick.Stop()
 	for {
