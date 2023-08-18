@@ -335,5 +335,9 @@ func UpdateAccounts() {
 }
 
 func StartFetchAccount(ctx context.Context, period time.Duration) {
+	if period <= 0 {
+		log.Println("Error: non-positive interval for NewTicker")
+		return
+	}
 	go NewWorker(ctx, period, UpdateAccounts)
 }
