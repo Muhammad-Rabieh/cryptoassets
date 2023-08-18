@@ -56,6 +56,7 @@ func GetUSDCNYFromYahoo() (float64, error) {
 		log.Println("Error: Failed to get data from Yahoo API")
 		return 1.0, err // return a default positive duration
 	}
+	GetProgress() // Call GetProgress function and log the progress
 	return usdcny, nil
 }
 
