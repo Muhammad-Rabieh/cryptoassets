@@ -51,7 +51,13 @@ func GetFinanceFromYahoo(symbol string) (float64, error) {
 }
 
 func GetUSDCNYFromYahoo() (float64, error) {
-	return GetFinanceFromYahoo("USDCNY=X")
+	usdcny, err := GetFinanceFromYahoo("USDCNY=X")
+	if err != nil {
+		log.Println("Error: Failed to get data from Yahoo API")
+		return 1.0, err // return a default positive duration
+	}
+	GetProgress() // Call GetProgress function and log the progress
+	return usdcny, nil
 }
 
 func GetBTCUSDFromYahoo() (float64, error) {

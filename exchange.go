@@ -334,6 +334,16 @@ func UpdateAccounts() {
 	wg.Wait()
 }
 
+func GetProgress() float64 {
+	// Calculate and return the progress of the code execution
+	return 0.0
+}
+
 func StartFetchAccount(ctx context.Context, period time.Duration) {
+	if period <= 0 {
+		log.Println("Error: non-positive interval for NewTicker")
+		return
+	}
 	go NewWorker(ctx, period, UpdateAccounts)
+	GetProgress() // Call GetProgress function and log the progress
 }
